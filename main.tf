@@ -42,15 +42,15 @@ data "aws_acm_certificate" "cert" {
  * Create CloudFront distribution for SSL support but caching disabled, leave that to Cloudflare
  */
 resource "aws_cloudfront_distribution" "hugo" {
-  count = 1
+  count      = 1
   depends_on = ["aws_s3_bucket.hugo"]
 
   origin {
     custom_origin_config {
-      http_port = 80
-      https_port = 443
+      http_port              = 80
+      https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
+      origin_ssl_protocols   = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
     }
 
     // Important to use this format of origin domain name, it is the only format that
