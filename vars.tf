@@ -48,3 +48,9 @@ variable "origin_path" {
   type        = "string"
   default     = "public"
 }
+
+variable "s3_origin_id" {
+  description = "Origin ID used in CloudFront"
+  type        = "string"
+  default     = "hugo-s3-origin"
+}

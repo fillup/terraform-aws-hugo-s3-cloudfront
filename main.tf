@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "hugo" {
     // supports S3 redirects with CloudFront
     domain_name = "${var.bucket_name}.s3-website-${var.aws_region}.amazonaws.com"
 
-    origin_id   = "hugo-s3-origin"
+    origin_id   = "${var.s3_origin_id}"
     origin_path = "/${var.origin_path}"
   }
 
@@ -70,7 +70,7 @@ resource "aws_cloudfront_distribution" "hugo" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "hugo-s3-origin"
+    target_origin_id = "${var.s3_origin_id}"
 
     forwarded_values {
       query_string = false
