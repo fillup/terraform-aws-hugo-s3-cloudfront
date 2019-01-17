@@ -49,8 +49,30 @@ variable "origin_path" {
   default     = "public"
 }
 
+variable "routing_rules" {
+  description = "A json array containing routing rules describing redirect behavior and when redirects are applied"
+  type        = "string"
+
+  default = <<EOF
+[{
+    "Condition": {
+        "KeyPrefixEquals": "/"
+    },
+    "Redirect": {
+        "ReplaceKeyWith": "index.html"
+    }
+}]
+EOF
+}
+
 variable "s3_origin_id" {
   description = "Origin ID used in CloudFront"
   type        = "string"
   default     = "hugo-s3-origin"
+}
+
+variable "viewer_protocol_policy" {
+  description = "One of allow-all, https-only, or redirect-to-https"
+  type        = "string"
+  default     = "redirect-to-https"
 }

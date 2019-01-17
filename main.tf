@@ -20,16 +20,7 @@ resource "aws_s3_bucket" "hugo" {
     error_document = "${var.origin_path}/404.html"
 
     // Routing rule is needed to support hugo friendly urls
-    routing_rules = <<EOF
-[{
-    "Condition": {
-        "KeyPrefixEquals": "/"
-    },
-    "Redirect": {
-        "ReplaceKeyWith": "index.html"
-    }
-}]
-EOF
+    routing_rules = "${var.routing_rules}"
   }
 }
 
@@ -80,7 +71,7 @@ resource "aws_cloudfront_distribution" "hugo" {
       }
     }
 
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "${var.viewer_protocol_policy}"
 
     // Using CloudFront defaults, tune to liking
     min_ttl     = "${var.cf_min_ttl}"
