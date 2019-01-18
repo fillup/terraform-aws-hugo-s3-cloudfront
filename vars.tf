@@ -43,6 +43,36 @@ variable "cf_price_class" {
   default     = "PriceClass_All"
 }
 
+variable "cors_allowed_headers" {
+  description = "List of headers allowed in CORS"
+  type        = "list"
+  default     = []
+}
+
+variable "cors_allowed_methods" {
+  description = "List of methods allowed in CORS"
+  type        = "list"
+  default     = ["GET"]
+}
+
+variable "cors_allowed_origins" {
+  description = "List of origins allowed to make CORS requests"
+  type        = "list"
+  default     = ["https://s3.amazonaws.com"]
+}
+
+variable "cors_expose_headers" {
+  description = "List of headers to expose in CORS response"
+  type        = "list"
+  default     = []
+}
+
+variable "cors_max_age_seconds" {
+  description = "Specifies time in seconds that browser can cache the response for a preflight request"
+  type        = "string"
+  default     = 3000
+}
+
 variable "origin_path" {
   description = "Path in S3 bucket for hosted files, without slashes"
   type        = "string"

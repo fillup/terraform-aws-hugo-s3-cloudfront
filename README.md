@@ -21,6 +21,11 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
  - `origin_path` - Path to document root in S3 bucket without slashes. Default: `public`
  - `routing_rules` - A json array containing routing rules describing redirect behavior and when redirects are applied. Default routes `/` to `index.html` 
  - `viewer_protocol_policy` - One of allow-all, https-only, or redirect-to-https. Default: `redirect-to-https`
+ - `cors_allowed_headers` - List of headers allowed in CORS. Default: `[]`
+ - `cors_allowed_methods` - List of methods allowed in CORS. Default: `["GET"]`
+ - `cors_allowed_origins` - List of origins allowed to make CORS requests. Default: `["https://s3.amazonaws.com"]`
+ - `cors_expose_headers`  - List of headers to expose in CORS response. Default: `[]`
+ - `cors_max_age_seconds` - Specifies time in seconds that browser can cache the response for a preflight request. Default: `3000`
  
 ## Usage Example
 
