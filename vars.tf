@@ -74,9 +74,9 @@ variable "cors_max_age_seconds" {
 }
 
 variable "origin_path" {
-  description = "Path in S3 bucket for hosted files, without slashes"
+  description = "Path in S3 bucket for hosted files, with leading slash"
   type        = "string"
-  default     = "public"
+  default     = "/public"
 }
 
 variable "routing_rules" {

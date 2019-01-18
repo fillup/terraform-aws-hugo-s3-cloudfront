@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "hugo" {
     domain_name = "${var.bucket_name}.s3-website-${var.aws_region}.amazonaws.com"
 
     origin_id   = "${var.s3_origin_id}"
-    origin_path = "/${var.origin_path}"
+    origin_path = "${var.origin_path}"
   }
 
   enabled             = true
