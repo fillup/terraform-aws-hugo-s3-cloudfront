@@ -10,6 +10,7 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
  - `aliases` - A list of hostname aliases for CloudFront to listen on
  - `bucket_name` - Name of bucket to use, must be globally unique
  - `cert_domain` - Domain name on existing Amazon Certificate Manager certificate to use with CloudFront
+ - `deployment_user_arn` - ARN to a user to be given permission to put objects into the bucket
 
 ## Optional Inputs
 
@@ -31,17 +32,18 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
 
 ```hcl
 module "hugosite" {
-  source      = "github.com/fillup/terraform-hugo-s3-cloudfront"
-  aliases     = ["www.domain.com", "domain.com"]
-  bucket_name = "www.domain.com"
-  cert_domain = "*.domain.com"
+  source              = "github.com/fillup/terraform-hugo-s3-cloudfront"
+  aliases             = ["www.domain.com", "domain.com"]
+  bucket_name         = "www.domain.com"
+  cert_domain         = "*.domain.com"
+  deployment_user_arn = "arn:aws:iam::111122223333:person"
 }
 ```
 
 ## License - MIT
 MIT License
 
-Copyright (c) 2018 Phillip Shipley
+Copyright (c) 2020 Phillip Shipley
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

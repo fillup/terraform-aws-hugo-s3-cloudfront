@@ -5,7 +5,8 @@ data "template_file" "bucket_policy" {
   template = "${file("${path.module}/bucket-policy.json")}"
 
   vars {
-    bucket_name = "${var.bucket_name}"
+    bucket_name         = "${var.bucket_name}"
+    deployment_user_arn = "${var.deployment_user_arn}"
   }
 }
 
