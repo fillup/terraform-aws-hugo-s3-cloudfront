@@ -106,3 +106,8 @@ variable "viewer_protocol_policy" {
   type        = "string"
   default     = "redirect-to-https"
 }
+
+variable "deployment_user_arn" {
+  description = "ARN for user who is able to put objects into S3 bucket"
+  type        = "string"
+}
