@@ -19,6 +19,8 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
  - `cf_min_ttl` - Minimum CloudFront caching TTL. Default: `0`
  - `cf_max_ttl` - Maximum CloudFront caching TTL. Default: `31536000`
  - `cf_price_class` - The CloudFront pricing class to use. Default: `PriceClass_All`
+ - `error_document` - The file that should be served for errors. Default: `404.html`
+ - `index_document` - The default file to be served. Default: `index.html`
  - `origin_path` - Path to document root in S3 bucket without slashes. Default: `public`
  - `routing_rules` - A json array containing routing rules describing redirect behavior and when redirects are applied. Default routes `/` to `index.html` 
  - `viewer_protocol_policy` - One of allow-all, https-only, or redirect-to-https. Default: `redirect-to-https`
