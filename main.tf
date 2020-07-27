@@ -17,8 +17,8 @@ resource "aws_s3_bucket" "hugo" {
   force_destroy = true
 
   website {
-    index_document = "index.html"
-    error_document = "${var.origin_path}/404.html"
+    index_document = var.index_document
+    error_document = "${var.origin_path}/${var.error_document}"
 
     // Routing rule is needed to support hugo friendly urls
     routing_rules = var.routing_rules

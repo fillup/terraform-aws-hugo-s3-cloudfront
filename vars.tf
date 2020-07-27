@@ -73,6 +73,18 @@ variable "cors_max_age_seconds" {
   default     = 3000
 }
 
+variable "error_document" {
+  description = "Error page document in S3 bucket"
+  type        = string
+  default     = "404.html"
+}
+
+variable "index_document" {
+  description = "Index page document in S3 bucket"
+  type        = string
+  default     = "index.html"
+}
+
 variable "origin_path" {
   description = "Path in S3 bucket for hosted files, with leading slash"
   type        = string
