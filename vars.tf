@@ -73,6 +73,34 @@ variable "cors_max_age_seconds" {
   default     = 3000
 }
 
+variable "custom_error_response" {
+  description = "Optionally a list of custom error response configurations for CloudFront distribution"
+  type = set(object({
+    error_code         = number
+    response_code      = number
+    response_page_path = string
+  }))
+  default = null
+}
+
+variable "default_root_object" {
+  description = "CloudFront distribution default_root_object"
+  type        = string
+  default     = "index.html"
+}
+
+variable "error_document" {
+  description = "Error page document in S3 bucket"
+  type        = string
+  default     = "404.html"
+}
+
+variable "index_document" {
+  description = "Index page document in S3 bucket"
+  type        = string
+  default     = "index.html"
+}
+
 variable "origin_path" {
   description = "Path in S3 bucket for hosted files, with leading slash"
   type        = string
