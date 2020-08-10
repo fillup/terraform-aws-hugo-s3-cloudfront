@@ -61,9 +61,18 @@ resource "aws_cloudfront_distribution" "hugo" {
     origin_path = var.origin_path
   }
 
+  dynamic "custom_error_response" {
+    for_each = var.custom_error_response
+    content {
+      error_code         = custom_error_response.value.error_code
+      response_code      = custom_error_response.value.response_code
+      response_page_path = custom_error_response.value.response_page_path
+    }
+  }
+
   enabled             = true
   is_ipv6_enabled     = true
-  default_root_object = "index.html"
+  default_root_object = var.default_root_object
 
   aliases = var.aliases
 

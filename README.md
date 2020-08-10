@@ -19,6 +19,9 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
  - `cf_min_ttl` - Minimum CloudFront caching TTL. Default: `0`
  - `cf_max_ttl` - Maximum CloudFront caching TTL. Default: `31536000`
  - `cf_price_class` - The CloudFront pricing class to use. Default: `PriceClass_All`
+ - `custom_error_response` - A list of objects to provide custom error responses from CloudFront. 
+    See [Using Custom Error Responses from CloudFront](#using-custom-error-responses-from-cloudfront) for details. 
+ - `default_root_object` - Default root object for CloudFlare to request when not otherwise specified. Default: `index.html`
  - `error_document` - The file that should be served for errors. Default: `404.html`
  - `index_document` - The default file to be served. Default: `index.html`
  - `origin_path` - Path to document root in S3 bucket without slashes. Default: `public`
@@ -39,6 +42,30 @@ module "hugosite" {
   bucket_name         = "www.domain.com"
   cert_domain         = "*.domain.com"
   deployment_user_arn = "arn:aws:iam::111122223333:person"
+}
+```
+
+## Using Custom Error Responses from CloudFront
+Cloudfront allows you to override error responses if desired. This is useful when hosting Single Page Apps on S3 
+and want to leverage the default error document to route all requests to your index, but prevent S3 from returning
+a 404 error to the browser. Here is an example of replacing 404 errors with 200 OK responses. 
+
+```hcl
+module "hugosite" {
+  source              = "github.com/fillup/terraform-hugo-s3-cloudfront"
+  aliases             = ["www.domain.com", "domain.com"]
+  bucket_name         = "www.domain.com"
+  cert_domain         = "*.domain.com"
+  deployment_user_arn = "arn:aws:iam::111122223333:person"
+  default_root_object = null
+  error_document      = "index.html"
+  custom_error_response = [
+      {
+        error_code         = 404
+        response_code      = 200
+        response_page_path = "/index.html"
+      },
+    ]
 }
 ```
 
