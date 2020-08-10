@@ -59,11 +59,13 @@ module "hugosite" {
   deployment_user_arn = "arn:aws:iam::111122223333:person"
   default_root_object = null
   error_document      = "index.html"
-  custom_error_response = set(object({
-    error_code         = 404
-    response_code      = 200
-    response_page_path = "/index.html"
-  }))
+  custom_error_response = [
+      {
+        error_code         = 404
+        response_code      = 200
+        response_page_path = "/index.html"
+      },
+    ]
 }
 ```
 
