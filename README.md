@@ -24,6 +24,7 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
  - `default_root_object` - Default root object for CloudFlare to request when not otherwise specified. Default: `index.html`
  - `error_document` - The file that should be served for errors. Default: `404.html`
  - `index_document` - The default file to be served. Default: `index.html`
+ - `minimum_viewer_tls_version` - Minimum TLS version for viewers connecting to CloudFront. Default: `TLSv1.2_2019`
  - `origin_path` - Path to document root in S3 bucket without slashes. Default: `public`
  - `origin_ssl_protocols` - List of SSL protocols to enable on Cloudfront distribution. Default: `TLSv1.2_2019` 
  - `routing_rules` - A json array containing routing rules describing redirect behavior and when redirects are applied. Default routes `/` to `index.html` 

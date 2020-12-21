@@ -102,7 +102,7 @@ resource "aws_cloudfront_distribution" "hugo" {
   viewer_certificate {
     acm_certificate_arn      = data.aws_acm_certificate.cert.arn
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1"
+    minimum_protocol_version = var.minimum_viewer_tls_version
   }
 
   restrictions {
