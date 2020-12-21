@@ -50,7 +50,7 @@ resource "aws_cloudfront_distribution" "hugo" {
       http_port              = 80
       https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
+      origin_ssl_protocols   = var.origin_ssl_protocols
     }
 
     // Important to use this format of origin domain name, it is the only format that
