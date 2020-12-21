@@ -101,6 +101,12 @@ variable "index_document" {
   default     = "index.html"
 }
 
+variable "minimum_viewer_tls_version" {
+  description = "Minimum TLS version for viewers connecting to CloudFront"
+  type        = string
+  default     = "TLSv1.2_2019"
+}
+
 variable "origin_path" {
   description = "Path in S3 bucket for hosted files, with leading slash"
   type        = string
