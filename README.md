@@ -26,7 +26,7 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
  - `index_document` - The default file to be served. Default: `index.html`
  - `minimum_viewer_tls_version` - Minimum TLS version for viewers connecting to CloudFront. Default: `TLSv1.2_2019`
  - `origin_path` - Path to document root in S3 bucket without slashes. Default: `public`
- - `origin_ssl_protocols` - List of SSL protocols to enable on Cloudfront distribution. Default: `TLSv1.2_2019` 
+ - `origin_ssl_protocols` - List of SSL protocols to enable on Cloudfront distribution. Default: `TLSv1.2` 
  - `routing_rules` - A json array containing routing rules describing redirect behavior and when redirects are applied. Default routes `/` to `index.html` 
  - `viewer_protocol_policy` - One of allow-all, https-only, or redirect-to-https. Default: `redirect-to-https`
  - `cors_allowed_headers` - List of headers allowed in CORS. Default: `[]`
