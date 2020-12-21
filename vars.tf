@@ -116,7 +116,7 @@ variable "origin_path" {
 variable "origin_ssl_protocols" {
   type        = list(string)
   description = "List of Origin SSL policies for Cloudfront distribution. See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValues-security-policy for options"
-  default     = ["TLSv1.2_2019"]
+  default     = ["TLSv1.2"]
 }
 
 variable "routing_rules" {
