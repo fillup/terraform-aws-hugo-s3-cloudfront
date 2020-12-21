@@ -80,7 +80,7 @@ variable "custom_error_response" {
     response_code      = number
     response_page_path = string
   }))
-  default = null
+  default = []
 }
 
 variable "default_root_object" {
