@@ -80,7 +80,7 @@ variable "custom_error_response" {
     response_code      = number
     response_page_path = string
   }))
-  default = null
+  default = []
 }
 
 variable "default_root_object" {
@@ -105,6 +105,12 @@ variable "origin_path" {
   description = "Path in S3 bucket for hosted files, with leading slash"
   type        = string
   default     = "/public"
+}
+
+variable "origin_ssl_protocols" {
+  type        = list(string)
+  description = "List of Origin SSL policies for Cloudfront distribution. See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValues-security-policy for options"
+  default     = ["TLSv1.2_2019"]
 }
 
 variable "routing_rules" {
