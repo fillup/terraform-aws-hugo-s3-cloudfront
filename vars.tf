@@ -107,6 +107,12 @@ variable "origin_path" {
   default     = "/public"
 }
 
+variable "origin_ssl_protocols" {
+  type        = list(string)
+  description = "List of Origin SSL policies for Cloudfront distribution. See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValues-security-policy for options"
+  default     = ["TLSv1.2_2019"]
+}
+
 variable "routing_rules" {
   description = "A json array containing routing rules describing redirect behavior and when redirects are applied"
   type        = string
