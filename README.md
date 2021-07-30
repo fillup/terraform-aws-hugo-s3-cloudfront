@@ -9,7 +9,7 @@ supports S3 redirects. This module helps keep setup consistent for multiple Hugo
 
  - `aliases` - A list of hostname aliases for CloudFront to listen on
  - `bucket_name` - Name of bucket to use, must be globally unique
- - `cert_domain` - Domain name on existing Amazon Certificate Manager certificate to use with CloudFront
+ - `cert_domain` - Domain name on existing Amazon Certificate Manager certificate to use with CloudFront. :warning: Only certificates in `us-east-1` will work for CloudFront (your arn should begin with `arn:aws:acm:us-east-1:xxxxxxxxxxx:certificate/...`)
  - `deployment_user_arn` - ARN to a user to be given permission to put objects into the bucket
 
 ## Optional Inputs
