@@ -12,18 +12,34 @@ data "template_file" "bucket_policy" {
 
 resource "aws_s3_bucket" "hugo" {
   bucket        = var.bucket_name
-  acl           = "public-read"
-  policy        = data.template_file.bucket_policy.rendered
   force_destroy = true
+}
 
-  website {
-    index_document = var.index_document
-    error_document = "${var.origin_path}/${var.error_document}"
+resource "aws_s3_bucket_acl" "hugo" {
+  bucket = aws_s3_bucket.hugo.id
+  acl    = "public-read"
+}
 
-    // Routing rule is needed to support hugo friendly urls
-    routing_rules = var.routing_rules
+resource "aws_s3_bucket_policy" "hugo" {
+  bucket = aws_s3_bucket.hugo.id
+  policy = data.template_file.bucket_policy.rendered
+}
+
+resource "aws_s3_bucket_website_configuration" "hugo" {
+  bucket = aws_s3_bucket.hugo.id
+  index_document {
+    suffix = var.index_document
+  }
+  error_document {
+    key = "${var.origin_path}/${var.error_document}"
   }
 
+  // Routing rule is needed to support hugo friendly urls
+  routing_rules = var.routing_rules
+}
+
+resource "aws_s3_bucket_cors_configuration" "hugo" {
+  bucket = aws_s3_bucket.hugo.id
   cors_rule {
     allowed_headers = var.cors_allowed_headers
     allowed_methods = var.cors_allowed_methods
