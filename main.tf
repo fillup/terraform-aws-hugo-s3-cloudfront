@@ -1,13 +1,11 @@
 /*
  * Create S3 bucket with appropriate permissions
  */
-data "template_file" "bucket_policy" {
-  template = file("${path.module}/bucket-policy.json")
-
-  vars = {
+locals {
+  bucket_policy = templatefile(file("${path.module}/bucket-policy.json"), {
     bucket_name         = var.bucket_name
     deployment_user_arn = var.deployment_user_arn
-  }
+  })
 }
 
 resource "aws_s3_bucket" "hugo" {
@@ -22,7 +20,7 @@ resource "aws_s3_bucket_acl" "hugo" {
 
 resource "aws_s3_bucket_policy" "hugo" {
   bucket = aws_s3_bucket.hugo.id
-  policy = data.template_file.bucket_policy.rendered
+  policy = local.bucket_policy
 }
 
 resource "aws_s3_bucket_website_configuration" "hugo" {
