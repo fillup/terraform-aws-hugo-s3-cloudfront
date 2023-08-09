@@ -2,7 +2,7 @@
  * Create S3 bucket with appropriate permissions
  */
 locals {
-  bucket_policy = templatefile(file("${path.module}/bucket-policy.json"), {
+  bucket_policy = templatefile("${path.module}/bucket-policy.json", {
     bucket_name         = var.bucket_name
     deployment_user_arn = var.deployment_user_arn
   })
